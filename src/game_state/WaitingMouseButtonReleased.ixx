@@ -8,7 +8,6 @@ import core.EntityView;
 
 import game_controller.GameService;
 import game_controller.BoardGameState;
-import game_controller.BoardEnabled;
 
 namespace mbg {
   /*****************************************************************************
