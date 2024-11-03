@@ -12,4 +12,5 @@ _deps
 CRC_card.md
 .gitconfig
 .bash_history
+diagram
 *.eapx
