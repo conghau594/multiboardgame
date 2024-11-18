@@ -1,0 +1,67 @@
+//NOTE
+// + TODO.###    : to insert a to-do of number ###-th (e.g. TODO.123).
+// + [x]TODO.### : to hide a to-do after completing it (e.g. [x]TODO.456, [x]TODO!789).
+// + TODO!###    : to insert a to-do with high priority (e.g. TODO!789).
+//
+// 
+//GLOBAL TODO
+// TODO!034 Add method `loadBMG()` image to class SDLViewframe
+// [x]TODO!033 Then create chess game model for implementing logic of chess game
+// [x]TODO!032 Modify game model
+// [x]TODO!031 Create state classes for the in-game scene (including handling events for each state)
+// TODO!030 Load images for 2 scenes: Find Game and In game
+// [x]TODO!029 Create 2 event handlers for mouse and keyboard, and implement the `handleEvents()` of ViewFrame
+// [x]TODO!028 Design images for chess game
+// [x]TODO.027 Make creatPointer() as vardiadic template function with std::forward<Arg>arg...
+// [x]TODO.026 Add some interface for ViewFrame and Window for display(),...
+// [x]TODO.025 Create SDLRectangle type as an alias of SDL_Rect
+// [x]TODO!024 Move all the steps for creating window or initialize object (image) to SDLViewWindow.
+//             The main function calls just one command `Client[i]::run()`.
+// [x]TODO!023 Modify all the cores to adapt to the new architecture.
+// [x]TODO!022 Change update(EventHandlerManager&) to update(EventHandlerManager::Pointer) or update(EventHandlerManager::Pointer).
+//             Always use Pointer instead of reference.
+// [x]TODO!021 Remove all overwriting method that relates to something called HeapPointer. Also remove the HeapPointer then never use it afterward.
+// [x]TODO!012 Guarantee that 1 class inherits only 1 another, also implements intefaces that has never been implemented by the parents before,
+//             then you can remove the `virtual` keyword from inheritance area of the class.
+// [x]TODO!011 Use smart pointer with `std::enable_shared_from_this` for all classes.
+// [x]TODO!006 Check how the SDL window and some other graphic library render and display.
+// 
+// Size of std::string     = 32
+//         std::shared_ptr = 16
+//         std::weak_ptr   = 16
+//         std::vector     = 24
+//         std::list       = 24
+//         std::stack      = 80
+//         std::type_info  = 24
+// 
+//          Displayable
+//          Updatable
+//          EventHandleable
+//          State
+// 
+//          Avatar
+//          AvatarManager
+//          Client
+//          Entity
+//          EntityController
+//          EntityView
+//          EventHandler
+//          EventHandlerManager
+//          KeyboardEventManager
+//          MouseEventManager
+//          RectangleParams
+//          SceneController
+//          SceneModel
+//          SceneView
+//          SceneStack
+//          ViewFrame
+//          Window
+// 
+//          SDLAvatar
+//          SDLEntityView
+//          SDLEventHandler
+//          SDLSceneState
+//          SDLSceneController
+//          SDLSceneView
+//          SDLAppViewFrame
+//          SDLWindow
