@@ -67,7 +67,7 @@ namespace mbg {
       return Pointer(new WaitingBoardFocused(std::forward<ARGS>(args)...));
     }
 
-  protected://contructors
+  //protected://contructors
     WaitingBoardFocused(SDLChessGameService::Pointer gameService) 
       : BoardGameState(gameService->getChessGameController()),
         game_service_(gameService)

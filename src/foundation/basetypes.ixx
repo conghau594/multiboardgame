@@ -6,7 +6,7 @@ export module foundation.basetypes;
 namespace mbg {
   //primitive typedefs
   export {
-    using SizeType  = size_t;
+    using SizeType  = int /* size_t */;
     using Double    = double;
     using Float     = float;
     using Integer   = int32_t;

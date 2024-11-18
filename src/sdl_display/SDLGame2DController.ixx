@@ -24,7 +24,7 @@ namespace mbg {
       return Pointer(new SDLGame2DController(std::forward<Args>(args)...));
     }
 
-  protected://contructors
+  //protected://contructors
     SDLGame2DController(
       Game2DModel::Pointer model, 
       Game2DView::Pointer view, 

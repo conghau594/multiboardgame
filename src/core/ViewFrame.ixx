@@ -64,7 +64,7 @@ namespace mbg {
     void setSceneStack(SceneStack::Pointer scenceStack) { scene_stack_ = scenceStack; }
     void setEventHandler(EventHandler::Pointer eventHandler) { event_handler_ = eventHandler; }
 
-  protected://contructors
+  public://contructors
     ViewFrame(
       Window::Pointer window, 
       Integer fps, 

@@ -134,7 +134,7 @@ namespace mbg {
       return Pointer(new WaitingTurnTaken(std::forward<ARGS>(args)...));
     }
 
-  protected://member functions
+  //protected://member functions
     WaitingTurnTaken(
       SDLChessGameService::Pointer boardService,
       WaitingBoardFocused::Pointer nextState

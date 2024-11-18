@@ -28,10 +28,12 @@ namespace mbg {
     virtual String getID() { return typeid(*this).name(); }
     
     SharedPointer<Game2DController> getGameController() const { 
-      return game_ctrler_.lock(); }
+      return game_ctrler_.lock(); 
+    }
+
     //GameService::Pointer getGameService() const { return board_service_; }
 
-  protected:
+  //protected:
     BoardGameState(
       SharedPointer<Game2DController> gameCtrler
     ) : game_ctrler_(gameCtrler)

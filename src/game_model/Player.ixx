@@ -53,7 +53,7 @@ namespace mbg {
       return Pointer(new Player(std::forward<ARGS>(args)...));
     }
 
-  protected://contructors
+  //protected://contructors
     Player() = default;
     Player(String id, PlayerTurn turnNumber)
       : id_(id), turn_(turnNumber)

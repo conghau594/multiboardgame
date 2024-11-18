@@ -8,7 +8,7 @@ module app.SDLAppEventHandler;
 namespace mbg {
   /*****************************************************************************/
   void SDLAppEventHandler::handleUserEvent(SDLEvent* event) {
-#ifdef _DEBUG
+#ifdef _DEBUG1
     std::cout << "\n\n...void SDLAppEventHandler::handleUserEvent(SDLEvent* event)...";
     std::cout << "\n  user event type = " << event->user.type - getChessGameEventManager()->getFirstUserEventIndex();
 
@@ -17,7 +17,17 @@ namespace mbg {
     if (event->user.type == getChessGameEventManager()->getEnemyMoveEventIndex()) {
       (*getChessGameEventManager())[SDLChessGameEventManager::TYPE] = SDLChessGameEventManager::ENEMY_MOVE;
       (*getChessGameEventManager())[SDLChessGameEventManager::PLAYER_TURN] = Integer(event->user.data1);
-      (*getChessGameEventManager())[SDLChessGameEventManager::PIECE_MOVE_INFO] = Integer(event->user.data2);
+
+      if ( (event->window.windowID == 1) || (event->window.windowID == 2) ) 
+      {
+        (*getChessGameEventManager())[SDLChessGameEventManager::PIECE_MOVE_INFO] = Integer(event->user.data2);
+        (*getChessGameEventManager())[SDLChessGameEventManager::WINDOW_ID_12] = event->window.windowID;
+      }
+      else if ( (event->window.windowID == 3) || (event->window.windowID == 4) )
+      {
+        (*getChessGameEventManager())[SDLChessGameEventManager::PIECE_MOVE_INFO_1] = Integer(event->user.data2);
+        (*getChessGameEventManager())[SDLChessGameEventManager::WINDOW_ID_34] = event->window.windowID;
+      }
 
 
 #ifdef _DEBUG
@@ -26,6 +36,8 @@ namespace mbg {
       constexpr Integer BIT_MASK = 0b111;      
       auto data = (*getChessGameEventManager())[SDLChessGameEventManager::PIECE_MOVE_INFO];
       Vector<Integer> coords(4);
+      std::cout << "\n\n...void SDLAppEventHandler::handleUserEvent(SDLEvent* event)...";
+
       std::cout << "\n event wnd  = " << event->user.windowID; //data
       std::cout << "\n event type = " << (*getChessGameEventManager())[SDLChessGameEventManager::TYPE]; //data
       std::cout << "\n data       = " << data; //data

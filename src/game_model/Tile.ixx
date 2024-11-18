@@ -40,7 +40,7 @@ namespace mbg {
       return Pointer(new Tile(std::forward<ARGS>(args)...));
     }
 
-  protected://constructor
+  //protected://constructor
     Tile(Integer row, Integer col) : index_(row, col)
     { }    
 

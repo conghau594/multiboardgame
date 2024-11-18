@@ -123,7 +123,7 @@ namespace mbg {
       return Pointer(new SDLChessGameController(std::forward<ARGS>(args)...));
     }
 
-  protected://contructors
+  //protected://contructors
     SDLChessGameController(
       SDLWindow::Pointer window, 
       SDLAppEventHandler::Pointer eventHandler, 

@@ -61,7 +61,7 @@ namespace mbg {
       pushState(nextState);
     }
 
-  protected://constructors
+  //protected://constructors
     Game2DController(
       Game2DModel::Pointer model,
       Game2DView::Pointer view,

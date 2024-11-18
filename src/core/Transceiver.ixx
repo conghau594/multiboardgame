@@ -39,7 +39,6 @@ namespace mbg {
       return Pointer(new Transceiver(std::forward<Args>(args)...));
     }
 
-  protected://contructors
     Transceiver() = default;
 
   private://member data

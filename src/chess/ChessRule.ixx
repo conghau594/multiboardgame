@@ -214,7 +214,7 @@ namespace mbg {
       player->popBackItem();
     }
 
-  protected://contructors
+  //protected://contructors
     ChessRule(Game2DModel::Pointer gameModel)
     : Rule(gameModel),
       move_history_({0b111000000000000}),

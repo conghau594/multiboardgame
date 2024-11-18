@@ -35,7 +35,7 @@ namespace mbg {
 
     virtual Boolean shouldSubmit() = 0;
 
-  protected://contructors
+  //protected://contructors
     GameService(SharedPointer<Game2DController> gameCtrler)
       : game_ctrler_(gameCtrler)
     { }

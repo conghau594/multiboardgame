@@ -34,7 +34,7 @@ namespace mbg {
       return Pointer(new SDLAppEventHandler(std::forward<Args>(args)...));
     }
 
-  protected://contructor
+  //protected://contructor
     SDLAppEventHandler()
     {
       add(SDLChessGameEventManager::createPointer());

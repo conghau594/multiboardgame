@@ -75,11 +75,23 @@ namespace mbg {
     }
 
     Vector<Integer> getEnemyLastMove() const {
-      return ChessRule::decodeMoveInfo( (*getChessGameEventManager())[SDLChessGameEventManager::PIECE_MOVE_INFO] );
+      Integer windowID = getChessGameController()->getWindow()->getWindowID();
+      if (windowID == 1 || windowID == 2) {
+        return ChessRule::decodeMoveInfo((*getChessGameEventManager())[SDLChessGameEventManager::PIECE_MOVE_INFO]);
+      }
+      else if (windowID == 3 || windowID == 4) {
+        return ChessRule::decodeMoveInfo((*getChessGameEventManager())[SDLChessGameEventManager::PIECE_MOVE_INFO_1]);
+      }
     }
 
     Integer getEnemyLastMoveCode() const {
-      return (*getChessGameEventManager())[SDLChessGameEventManager::PIECE_MOVE_INFO];
+      Integer windowID = getChessGameController()->getWindow()->getWindowID();
+      if (windowID == 1 || windowID == 2) {
+        return (*getChessGameEventManager())[SDLChessGameEventManager::PIECE_MOVE_INFO];
+      }
+      else if (windowID == 3 || windowID == 4) {
+        return (*getChessGameEventManager())[SDLChessGameEventManager::PIECE_MOVE_INFO_1];
+      }
     }
  
     void submitMove(PieceIndex pieceType, Integer startRow, Integer startCol, Integer endRow, Integer endCol) const {
@@ -89,13 +101,13 @@ namespace mbg {
       (*getChessGameEventManager())[SDLChessGameEventManager::PLAYER_TURN] = getChessGameController()->getEnemyPlayer()->getTurn();
 
       getChessGameController()->getTransceiver()->sendEvent(
-        getChessGameEventManager()->getFirstUserEventIndex() + SDLChessGameEventManager::ENEMY_MOVE,
-        (*getChessGameEventManager())[SDLChessGameEventManager::PLAYER_TURN], //data1
-        data      //data2
+        getChessGameEventManager()->getEnemyMoveEventIndex(),               //event type index: event of enemy move
+        (*getChessGameEventManager())[SDLChessGameEventManager::PLAYER_TURN], //this player turn -> must be defined for EventHandler to catch which window to use
+        data      //the encoded chess move of this player
       );
 
 
-#ifdef _DEBUG
+#ifdef _DEBUG1
       std::cout << "\n...SDLChessGameService::submitMove(PieceIndex pieceType, Integer startRow, Integer startCol, Integer endRow, Integer endCol)..." << data;
       std::cout << "\n data       = " << data;
       std::cout << "\n   pieceType = " << pieceType; //`ieceType`
@@ -109,7 +121,7 @@ namespace mbg {
 
     /***************************************************************************/
     void movePieceView(Vector<ChessItem::Pointer>& changedPieces) const {     
-#ifdef _DEBUG
+#ifdef _DEBUG1
       std::cout << "\n\n...void movePiece(SDLEntityView::Pointer piece, SDLEntityView::Pointer square)...";
       std::cout << "\n   windowID = " << getChessGameController()->getWindow()->getWindowID();
 #endif
@@ -152,7 +164,7 @@ namespace mbg {
     }
 
 
-  protected:
+  //protected:
     SDLChessGameService(SharedPointer<SDLChessGameController> gameCtrler) 
       : GameService(gameCtrler)
     { }
@@ -254,8 +266,19 @@ namespace mbg {
 
   /*****************************************************************************/
   inline Boolean SDLChessGameService::isTurnTaken() {
-    if ((*getChessGameEventManager())[SDLChessGameEventManager::PLAYER_TURN] == getChessGameController()->getGameModel()->getPlayerManager()->getThisPlayer()->getTurn())
+    Integer thisWindowID = getChessGameController()->getWindow()->getWindowID();    
+    Integer lastWindowID_12 = (*getChessGameEventManager())[SDLChessGameEventManager::WINDOW_ID_12];
+    Integer lastWindowID_34 = (*getChessGameEventManager())[SDLChessGameEventManager::WINDOW_ID_34];
+
+    //Boolean result = ( (*getChessGameEventManager())[SDLChessGameEventManager::PLAYER_TURN] == getChessGameController()->getGameModel()->getPlayerManager()->getThisPlayer()->getTurn() );
+    if(  (thisWindowID == 1 && lastWindowID_12 == 2) 
+      || (thisWindowID == 2 && lastWindowID_12 == 1)
+      || (thisWindowID == 3 && lastWindowID_34 == 4)
+      || (thisWindowID == 4 && lastWindowID_34 == 3)
+      )
+    {
       return true;
+    }
 
     return false;
   }

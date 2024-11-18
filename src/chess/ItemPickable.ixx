@@ -192,7 +192,7 @@ namespace mbg {
       return Pointer(new ItemPickable(std::forward<ARGS>(args)...));
     }
 
-  protected://contructors
+  //protected://contructors
     ItemPickable(SDLChessGameService::Pointer boardService) 
       : WaitingMouseButtonPressed(boardService),
         hollow_square_(getChessGameController()->createDecorationOfSquare(SDLChessGameController::HOLLOW_SQUARE))  //SDLChessGameController::DecorationType, should be changed to SDLChessGameController::HOLLOW_SQUARE 

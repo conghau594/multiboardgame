@@ -28,7 +28,7 @@ namespace mbg {
       : event_values_(size) 
     { }
 
-  private://private data
+  protected://private data
     Vector<Integer> event_values_;///< each index of this is correspond to a type of event
   };
 

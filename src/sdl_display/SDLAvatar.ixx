@@ -37,7 +37,7 @@ namespace mbg {
       return Pointer(new SDLAvatar(std::forward<Args>(args)...));
     }
 
-  protected://contructors
+  //protected://contructors
     SDLAvatar(SizeType index) : Avatar(index)
     { }
     SDLAvatar(SizeType index, String picturePath, Window::Pointer window) : Avatar(index) {

@@ -32,7 +32,7 @@ namespace mbg {
     
     virtual void onTakingTurn() = 0;
 
-  protected:
+  //protected:
     SubmissionDisabled(
       GameService::Pointer boardService
     ) : BoardGameState(boardService->getGameController()),

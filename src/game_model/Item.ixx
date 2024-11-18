@@ -51,7 +51,7 @@ namespace mbg {
       return Pointer(new Item(std::forward<ARGS>(args)...));
     }
 
-  protected://constructor
+  //protected://constructor
     Item() = default;
     Item(Item const&) = default;
     Item(String name, Integer type, Double value) 
